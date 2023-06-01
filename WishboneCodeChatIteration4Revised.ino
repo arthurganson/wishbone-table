@@ -62,11 +62,13 @@ void loop() {
     // Wait for either Reed1 or Reed2 to close
     while (digitalRead(Reed1Pin) == HIGH && digitalRead(Reed2Pin) == HIGH) {
       // Wait until either Reed1 or Reed2 closes
+      // TODO check optical sensor, say "return" instead of "break"
     }
     Serial.print("reed switch detected ");
     Serial.print(digitalRead(Reed1Pin), DEC);
     Serial.println(digitalRead(Reed2Pin), DEC);
 
+    delay(100);  // wait until we're sure the reed switch is not bouncing
 
     if (digitalRead(Reed1Pin) == LOW) {
       // Reed1 is closed
@@ -75,10 +77,6 @@ void loop() {
       // Reed2 is closed
       walkingCycleReed2();
     }
-
-    // Turn OFF the Track
-    digitalWrite(TrackPin, LOW);
-    Serial.println("End of Walking Cycle and track is now OFF");
 
   
   }
@@ -142,11 +140,11 @@ void walkingCycleReed2() {
   digitalWrite(Transformer2Pin, HIGH);
   Serial.println("turning on solenoid");
   digitalWrite(Solenoid2Pin, HIGH);
-  delay (1000);
+  delay (1000);  // wait a little so solenoid has time to get disengaged
   Serial.println("turning on motor");
   digitalWrite(Motor2Pin, HIGH);
 
-  delay (5000);
+  delay (5000);  // wait a little so table has moved enough to clear the optical detector
 
   Serial.println("waiting for opt2");
 
@@ -155,6 +153,8 @@ void walkingCycleReed2() {
   while (!isOpt2Closed()) {
     // Wait until Opt2 closes
   }
+  // ok the table has finished turning all the way around
+  
   Serial.println("detected opt2");
   // Turn OFF Transformer2, Solenoid2, and Motor2
   digitalWrite(Transformer2Pin, LOW);
