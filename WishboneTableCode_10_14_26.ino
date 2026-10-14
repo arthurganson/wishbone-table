@@ -82,9 +82,10 @@ void loop() {
     Serial.print(reed1Value, DEC);
     Serial.println(reed2Value, DEC);
 
-    // no need for a delay here, a reed switch (added by Quentin)
+    // no need for a delay here, a reed switch was definitely triggered (added by Quentin)
     // delay(100);  // wait until we're sure the reed switch is not bouncing
 
+    // see which one triggered (added by Quentin)
     if (reed1Value == LOW) {
       // Reed1 is closed
       Serial.println("Left side has been triggered");
