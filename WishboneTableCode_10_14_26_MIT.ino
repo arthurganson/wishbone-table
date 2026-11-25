@@ -126,7 +126,7 @@ bool isOpt2Closed() {
 
 void walkingCycleReed1() {
   // Turn OFF the Track but wait a tiny bit more so the wishbone goes a little farther
-  delay(500);
+  delay(1500);
   digitalWrite(TrackPin, LOW);
   Serial.println("Track has been turned OFF");
 
@@ -149,7 +149,7 @@ void walkingCycleReed1() {
   Serial.println("detected opt1");
   // Turn OFF Transformer2, Solenoid1, and Motor1
 
-  delay(400); // wait a tiny bit so that the obstruction vane is more centered on the opto sensor
+  delay(050); // wait a tiny bit so that the obstruction vane is more centered on the opto sensor
 
   digitalWrite(Transformer2Pin, LOW);
   digitalWrite(Solenoid1Pin, LOW);
@@ -162,7 +162,7 @@ void walkingCycleReed1() {
 
 void walkingCycleReed2() {
   // Turn OFF the Track but wait a tiny bit more so the wishbone goes a little farther
-  delay(500);
+  delay(1000);
   digitalWrite(TrackPin, LOW);
   Serial.println("Track has been turned OFF");
 
@@ -185,7 +185,7 @@ void walkingCycleReed2() {
   // ok the table has finished turning all the way around
   
   Serial.println("detected opt2");
-  delay(400); // wait a tiny bit so that the obstruction vane is more centered on the opto sensor
+  delay(300); // wait a tiny bit so that the obstruction vane is more centered on the opto sensor
   
   // Turn OFF Transformer2, Solenoid2, and Motor2
   digitalWrite(Transformer2Pin, LOW);
